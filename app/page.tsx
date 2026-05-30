@@ -175,7 +175,7 @@ export default function Home() {
 
                 <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[hsl(var(--primary)/0.3)]">
                   <Image
-                    src="/pic.jpg"
+                    src="/PIC.JPG"
                     alt="Ryan Paul R. Palomo"
                     fill
                     className="object-cover object-center"
