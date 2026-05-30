@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    --background: 222 47% 6%;
+    --foreground: 213 31% 91%;
+    --card: 222 40% 9%;
+    --card-foreground: 213 31% 91%;
+    --popover: 222 40% 9%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 224 76% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 35% 13%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 222 35% 13%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 224 76% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --border: 222 30% 16%;
+    --input: 222 30% 16%;
+    --ring: 224 76% 60%;
+    --radius: 0.75rem;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    --indigo: 224 76% 60%;
+    --indigo-glow: 224 76% 70%;
+    --indigo-dim: 224 76% 20%;
+  }
+
+  .light {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 8%;
+    --primary: 224 76% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 93%;
+    --secondary-foreground: 222 47% 8%;
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 224 76% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --border: 220 13% 87%;
+    --input: 220 13% 87%;
+    --ring: 224 76% 48%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
 }
