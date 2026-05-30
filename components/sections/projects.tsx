@@ -136,7 +136,12 @@ export default function Projects() {
                     {project.status}
                   </span>
                 )}
+                
               </div>
+              
+              <p className="text-[hsl(var(--muted-foreground))] text-sm flex-1">
+                {project.description}
+              </p>
 
               {/* Tech tags */}
               <div className="flex flex-wrap gap-1.5 mt-auto">

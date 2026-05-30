@@ -8,6 +8,7 @@ import { Mail, ArrowRight, Download, GraduationCap, Briefcase } from "lucide-rea
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import Technologies from "@/components/sections/technologies";
+import Services from "@/components/sections/services";
 
 const roles = [
   "Full Stack Developer",
@@ -210,7 +211,7 @@ export default function Home() {
 
       {/* ── TECHNOLOGIES ── */}
       <Technologies />
-
+      <Services />
       <Footer />
     </main>
   );
