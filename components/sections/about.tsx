@@ -2,7 +2,7 @@
 
 export default function About() {
   const stats = [
-    { value: "1+", label: "Year Experience" },
+    { value: "2+", label: "Year Experience" },
     { value: "9+", label: "Projects Shipped" },
     { value: "3", label: "Roles Held" },
     { value: "2025", label: "PUP Grad" },
@@ -36,7 +36,7 @@ export default function About() {
               Shopify solutions, responsive web applications, and SaaS platforms from the ground up.
             </p>
             <p>
-              Currently, I&apos;m a <span className="text-[hsl(var(--foreground))] font-medium">Jr. Web Developer at GoCommerce</span> and
+              Currently, I&apos;m a <span className="text-[hsl(var(--foreground))] font-medium">Web Developer at GoCommerce</span> and
               Full-Stack Developer at <span className="text-[hsl(var(--foreground))] font-medium">Nexera Solutions</span>, where I
               helped build Multiple SaaS Products.
             </p>

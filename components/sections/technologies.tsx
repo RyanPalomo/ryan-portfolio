@@ -3,11 +3,60 @@
 import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Code2, Briefcase, Users, GitCommit } from "lucide-react";
+import { useTheme } from "next-themes";
+
+const SVGL_BASE = "https://svgl.app/library";
+
+// route: string = same for light & dark
+// route: { light, dark } = theme-aware
+type SvglRoute =
+  | { type: "single"; url: string }
+  | { type: "themed"; light: string; dark: string };
+
+function svglRoute(path: string | { light: string; dark: string }): SvglRoute {
+  if (typeof path === "string") return { type: "single", url: `${SVGL_BASE}/${path}` };
+  return {
+    type: "themed",
+    light: `${SVGL_BASE}/${path.light}`,
+    dark: `${SVGL_BASE}/${path.dark}`,
+  };
+}
+
+// Maps each display name to its SVGL asset path(s)
+const techIconMap: Record<string, SvglRoute> = {
+  // Frontend
+  "HTML & CSS":     svglRoute("html5.svg"),
+  "JavaScript":     svglRoute("javascript.svg"),
+  "TypeScript":     svglRoute("typescript.svg"),
+  "React JS":       svglRoute({ light: "react_light.svg",    dark: "react_dark.svg" }),
+  "Next JS":        svglRoute({ light: "nextjs_icon_dark.svg", dark: "nextjs_icon_dark.svg" }),
+  "Tailwind CSS":   svglRoute("tailwindcss.svg"),
+  "Bootstrap":      svglRoute("bootstrap.svg"),
+  // Backend
+  "Node JS":        svglRoute("nodejs.svg"),
+  "Express JS":     svglRoute({ light: "expressjs.svg", dark: "expressjs_dark.svg" }),
+  "PHP":            svglRoute({ light: "php.svg", dark: "php_dark.svg" }),
+  "Python":         svglRoute("python.svg"),
+  "Java":           svglRoute("java.svg"),
+  "C#":             svglRoute("csharp.svg"),
+  "Ruby":           svglRoute("ruby.svg"),
+  // Database
+  "MySQL":          svglRoute({ light: "mysql-icon-light.svg", dark: "mysql-icon-dark.svg" }),
+  "PostgreSQL":     svglRoute("postgresql.svg"),
+  "Supabase":       svglRoute("supabase.svg"),
+  // Platform
+  "Shopify / Liquid": svglRoute("shopify.svg"),
+  "WordPress":      svglRoute("wordpress.svg"), 
+  
+  // Tools
+  "Git & GitHub":   svglRoute({ light: "github_light.svg",  dark: "github_dark.svg" }),
+  "Figma":          svglRoute("figma.svg"),
+};
 
 const techByCategory = {
   Frontend: ["HTML & CSS", "JavaScript", "TypeScript", "React JS", "Next JS", "Tailwind CSS", "Bootstrap"],
   Backend: ["Node JS", "Express JS", "PHP", "Python", "Java", "C#", "Ruby"],
-  Database: ["MySQL", "PostgreSQL"],
+  Database: ["MySQL", "PostgreSQL", "Supabase"],
   Platform: ["Shopify / Liquid", "WordPress", "Squarespace"],
   Tools: ["Git & GitHub", "Figma"],
 };
@@ -62,14 +111,42 @@ const allTech = Object.entries(techByCategory).flatMap(([cat, items]) =>
 const row1 = allTech.slice(0, Math.ceil(allTech.length / 2));
 const row2 = allTech.slice(Math.ceil(allTech.length / 2));
 
+function SvglIcon({ route, name }: { route: SvglRoute; name: string }) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
+  const src =
+    route.type === "single"
+      ? route.url
+      : isDark
+      ? route.dark
+      : route.light;
+
+  return (
+    <img
+      src={src}
+      alt={name}
+      width={20}
+      height={20}
+      className="w-5 h-5 shrink-0 object-contain"
+      loading="lazy"
+    />
+  );
+}
+
 function TechBadge({ name, category }: { name: string; category: string }) {
   const colors = categoryColors[category];
+  const route = techIconMap[name];
+
   return (
     <div
-      className={`flex items-center gap-2 px-5 py-3 mx-3 rounded-xl border text-sm font-medium whitespace-nowrap ${colors.bg} ${colors.text} ${colors.border}`}
+      className={`flex items-center gap-2.5 px-5 py-3 mx-3 rounded-xl border text-sm font-medium whitespace-nowrap ${colors.bg} ${colors.text} ${colors.border}`}
     >
+      {route && <SvglIcon route={route} name={name} />}
       <span>{name}</span>
-      <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold uppercase tracking-wider opacity-60 border ${colors.border} ${colors.bg}`}>
+      <span
+        className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold uppercase tracking-wider opacity-60 border ${colors.border} ${colors.bg}`}
+      >
         {category}
       </span>
     </div>

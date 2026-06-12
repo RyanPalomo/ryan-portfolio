@@ -200,7 +200,7 @@ export default function Home() {
                     Experience
                   </p>
                   <p className="text-sm font-bold text-[hsl(var(--foreground))]">
-                    1+ Years <Briefcase size={16} className="inline text-[hsl(var(--primary))]" />
+                    2+ Years <Briefcase size={16} className="inline text-[hsl(var(--primary))]" />
                   </p>
                 </div>
               </div>

@@ -2,15 +2,25 @@
 
 import { ExternalLink, Tag } from "lucide-react";
 
+
 const projects = [
   {
     name: "Zupport",
     description:
       "An all-in-one AI-powered customer support SaaS platform built for Philippine e-commerce brands. Unifies Shopee, Lazada, TikTok, and Shopify messages into a single smart inbox — complete with AI reply drafting, automation, and analytics.",
-    tech: ["Next.js", "Tailwind CSS", "Node.js", "Express.js"],
+    tech: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "Vercel"],
     live: "https://zupport.app/",
     status: "Live",
     featured: true,
+  },
+  {
+    name: "Website Portfolio V2",
+    description:
+      "A Responsive portfolio website built with Next.js. Showcases projects and skills with a clean design and smooth user experience.",
+    tech: ["Next.js", "Tailwind CSS", "ShadCN UI","Aceternity UI", "Vercel"],
+    live: "https://ryanpalomo.vercel.app/",
+    status: "Live",
+    featured: false,
   },
   {
     name: "TLC Independent Living",
@@ -76,10 +86,19 @@ const projects = [
     featured: false,
   },
   {
+    name: "Website Portfolio V1",
+    description:
+      "A Responsive portfolio website built with HTML, Bootstrap, JavaScript. Showcases projects and skills with a clean design and smooth user experience.",
+    tech: ["HTML", "Bootstrap", "JavaScript"],
+    live: "https://ryanpalomo.github.io/",
+    status: "Live",
+    featured: false,
+  },
+  {
     name: "EcoMend",
     description:
       "Capstone project — a web app that uses machine learning to identify waste from images and leverages Gemini AI to suggest creative ways to repurpose it, promoting sustainable habits.",
-    tech: ["HTML", "Bootstrap", "JavaScript", "PHP", "Python", "Gemini AI"],
+    tech: ["HTML", "Bootstrap", "JavaScript", "PHP", "Python", "MySQL", "Gemini AI"],
     live: null,
     status: "Completed",
     featured: false,
