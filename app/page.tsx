@@ -82,7 +82,7 @@ export default function Home() {
                   className="block"
                   style={{
                     background:
-                      "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                      "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -112,7 +112,7 @@ export default function Home() {
               <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
                 <Link
                   href="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[hsl(var(--primary))] text-white font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
                 >
                   View Projects
                   <ArrowRight size={16} />
@@ -168,7 +168,7 @@ export default function Home() {
                   className="absolute inset-0 rounded-full blur-2xl opacity-20 scale-110"
                   style={{
                     background:
-                      "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                      "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
                   }}
                 />
 

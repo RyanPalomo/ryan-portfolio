@@ -89,7 +89,7 @@ export default function Loader() {
         <div className="relative">
           <div
             className="absolute inset-0 rounded-2xl blur-xl opacity-40"
-            style={{ background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)" }}
+            style={{ background: "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))" }}
           />
           <div
             className="relative w-20 h-20 rounded-2xl flex items-center justify-center border border-[hsl(var(--primary)/0.3)]"
@@ -98,7 +98,7 @@ export default function Loader() {
             <span
               className="text-2xl font-bold"
               style={{
-                background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                background: "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -126,7 +126,7 @@ export default function Loader() {
               className="h-full rounded-full transition-all duration-200 ease-out"
               style={{
                 width: `${Math.min(progress, 100)}%`,
-                background: "linear-gradient(90deg, hsl(var(--primary)), #a78bfa)",
+                background: "linear-gradient(90deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
               }}
             />
           </div>

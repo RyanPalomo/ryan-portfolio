@@ -42,7 +42,7 @@ window.addEventListener("resize", resizeCanvas);
       particles.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(99, 130, 230, ${p.alpha})`;
+        ctx.fillStyle = `rgba(52, 91, 139, ${p.alpha})`;
         ctx.fill();
 
         p.x += p.vx;
@@ -62,7 +62,7 @@ window.addEventListener("resize", resizeCanvas);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(99, 130, 230, ${0.12 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(52, 91, 139, ${0.12 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -118,7 +118,7 @@ window.addEventListener("resize", resizeCanvas);
           <span
             className="block"
             style={{
-              background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+              background: "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -139,7 +139,7 @@ window.addEventListener("resize", resizeCanvas);
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
             href="#projects"
-            className="px-7 py-3 rounded-xl bg-[hsl(var(--primary))] text-white font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
+            className="px-7 py-3 rounded-xl bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
           >
             View Projects
           </a>

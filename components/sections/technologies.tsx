@@ -68,7 +68,7 @@ const categoryColors: Record<string, { bg: string; text: string; border: string 
   Backend: { bg: "bg-emerald-500/10", text: "text-emerald-400", border: "border-emerald-500/20" },
   Database: { bg: "bg-orange-500/10", text: "text-orange-400", border: "border-orange-500/20" },
   Platform: { bg: "bg-cyan-500/10", text: "text-cyan-400", border: "border-cyan-500/20" },
-  Tools: { bg: "bg-pink-500/10", text: "text-pink-400", border: "border-pink-500/20" },
+  Tools: { bg: "bg-zinc-500/10", text: "text-zinc-400", border: "border-zinc-500/20" },
 };
 
 const stats = [
@@ -78,7 +78,7 @@ const stats = [
     suffix: "+",
     label: "Projects Shipped",
     description: "From MVPs to full-scale web apps",
-    accent: "hsl(262, 83%, 65%)",
+    accent: "hsl(214, 46%, 48%)",
   },
   {
     icon: Code2,
@@ -86,7 +86,7 @@ const stats = [
     suffix: "+",
     label: "Technologies",
     description: "Languages, frameworks & platforms",
-    accent: "hsl(217, 91%, 60%)",
+    accent: "hsl(210, 42%, 44%)",
   },
   {
     icon: GitCommit,
@@ -94,7 +94,7 @@ const stats = [
     suffix: "+ yrs",
     label: "Years Building",
     description: "Coding, shipping, and improving",
-    accent: "hsl(158, 64%, 52%)",
+    accent: "hsl(172, 28%, 44%)",
   },
   {
     icon: Users,
@@ -102,7 +102,7 @@ const stats = [
     suffix: "%",
     label: "Client Satisfaction",
     description: "Happy clients, clean deliveries",
-    accent: "hsl(38, 92%, 50%)",
+    accent: "hsl(42, 34%, 56%)",
   },
 ];
 

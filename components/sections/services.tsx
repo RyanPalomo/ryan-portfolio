@@ -17,8 +17,8 @@ const services = [
     description:
       "End-to-end web applications built with modern stacks — Next.js, React, Node.js, and scalable databases. Clean architecture, fast performance, and production-ready code.",
     tags: ["Next.js", "React", "Node.js", "PostgreSQL"],
-    gradient: "from-violet-500/10 to-purple-500/5",
-    accent: "hsl(262, 83%, 65%)",
+    gradient: "from-slate-500/10 to-blue-950/5",
+    accent: "hsl(214, 46%, 48%)",
   },
   {
     icon: ShoppingBag,
@@ -27,7 +27,7 @@ const services = [
       "Custom Shopify themes and apps tailored to your brand. From liquid templating to headless storefronts — I build stores that convert.",
     tags: ["Liquid", "Shopify CLI", "Headless", "Storefront API"],
     gradient: "from-emerald-500/10 to-teal-500/5",
-    accent: "hsl(158, 64%, 52%)",
+    accent: "hsl(172, 28%, 44%)",
   },
   {
     icon: Layers,
@@ -36,7 +36,7 @@ const services = [
       "Subscription-based platforms with auth, billing, dashboards, and multi-tenancy. Built to scale from MVP to thousands of users.",
     tags: ["SaaS", "Stripe", "Auth", "Multi-tenant"],
     gradient: "from-blue-500/10 to-cyan-500/5",
-    accent: "hsl(217, 91%, 60%)",
+    accent: "hsl(210, 42%, 44%)",
   },
   {
     icon: Palette,
@@ -44,8 +44,8 @@ const services = [
     description:
       "Interfaces that feel as good as they look. Figma designs, design systems, and pixel-perfect implementations focused on usability and delight.",
     tags: ["Figma", "Tailwind", "Design Systems", "Accessibility"],
-    gradient: "from-pink-500/10 to-rose-500/5",
-    accent: "hsl(330, 81%, 60%)",
+    gradient: "from-neutral-500/10 to-zinc-500/5",
+    accent: "hsl(220, 8%, 52%)",
   },
   {
     icon: Plug,
@@ -54,7 +54,7 @@ const services = [
       "Seamless third-party integrations — payment gateways, AI APIs, CRMs, and more. RESTful and GraphQL APIs designed for reliability.",
     tags: ["REST", "GraphQL", "Webhooks", "OAuth"],
     gradient: "from-amber-500/10 to-orange-500/5",
-    accent: "hsl(38, 92%, 50%)",
+    accent: "hsl(42, 34%, 56%)",
   },
   {
     icon: Handshake,
@@ -62,8 +62,8 @@ const services = [
     description:
       "Technical guidance for startups and businesses. Code reviews, architecture planning, and hands-on help to move your project forward faster.",
     tags: ["Code Review", "Architecture", "Mentoring", "Strategy"],
-    gradient: "from-violet-500/10 to-indigo-500/5",
-    accent: "hsl(239, 84%, 67%)",
+    gradient: "from-blue-950/10 to-slate-500/5",
+    accent: "hsl(214, 38%, 34%)",
   },
 ];
 
@@ -84,7 +84,7 @@ export default function Services() {
             <span
               style={{
                 background:
-                  "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                  "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -170,7 +170,7 @@ export default function Services() {
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[hsl(var(--primary))] text-white font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
           >
             Get in Touch
           </a>

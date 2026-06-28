@@ -34,7 +34,7 @@ export default function Contact() {
             <span className="text-[hsl(var(--foreground))]">Let&apos;s Work</span>{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                background: "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -76,7 +76,7 @@ export default function Contact() {
               </div>
               <a
                 href="mailto:palomoryan23@gmail.com"
-                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-[hsl(var(--primary))] text-white font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] font-semibold text-sm hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[hsl(var(--primary)/0.3)]"
               >
                 <Mail size={16} />
                 Say Hello
@@ -146,7 +146,7 @@ export default function Contact() {
             </div>
             <div
               className="calendly-inline-widget w-full"
-              data-url="https://calendly.com/palomoryan23/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=7c3aed"
+              data-url="https://calendly.com/palomoryan23/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=1c3d63"
               style={{ minWidth: "320px", height: "650px" }}
             />
           </Reveal>

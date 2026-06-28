@@ -21,7 +21,7 @@ export default function About() {
             Building things that{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                background: "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -51,7 +51,7 @@ export default function About() {
           <div className="mt-8 flex gap-3">
             <a
               href="/projects"
-              className="px-5 py-2.5 rounded-lg bg-[hsl(var(--primary))] text-white text-sm font-semibold hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200"
+              className="px-5 py-2.5 rounded-lg bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] text-sm font-semibold hover:bg-[hsl(var(--primary)/0.85)] transition-all duration-200"
             >
               See My Work
             </a>
@@ -74,7 +74,7 @@ export default function About() {
               <p
                 className="text-4xl font-bold mb-1 group-hover:scale-105 transition-transform duration-300 origin-left"
                 style={{
-                  background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                  background: "linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
