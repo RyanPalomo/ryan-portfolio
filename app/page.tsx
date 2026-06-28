@@ -9,6 +9,7 @@ import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import Technologies from "@/components/sections/technologies";
 import Services from "@/components/sections/services";
+import { Reveal } from "@/components/ui/reveal";
 
 const roles = [
   "Full Stack Developer",
@@ -44,8 +45,11 @@ export default function Home() {
       return () => clearTimeout(t);
     }
     if (deleting && charIndex === 0) {
-      setDeleting(false);
-      setRoleIndex((i) => (i + 1) % roles.length);
+      const t = setTimeout(() => {
+        setDeleting(false);
+        setRoleIndex((i) => (i + 1) % roles.length);
+      }, 0);
+      return () => clearTimeout(t);
     }
   }, [charIndex, deleting, roleIndex]);
 
@@ -58,7 +62,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left / Text */}
-            <div className="order-2 lg:order-1 text-center lg:text-left">
+            <Reveal className="order-2 lg:order-1 text-center lg:text-left" tone="soft">
               {/* Badge */}
               <div className="flex justify-center lg:justify-start">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[hsl(var(--primary)/0.3)] bg-[hsl(var(--primary)/0.08)] mb-8">
@@ -155,10 +159,10 @@ export default function Home() {
                   </a>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
             {/* Right / Image */}
-            <div className="order-1 lg:order-2 flex justify-center">
+            <Reveal className="order-1 lg:order-2 flex justify-center" tone="panel" delay={0.16}>
               <div className="relative">
                 <div
                   className="absolute inset-0 rounded-full blur-2xl opacity-20 scale-110"
@@ -204,7 +208,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

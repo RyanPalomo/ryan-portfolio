@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { Reveal } from "@/components/ui/reveal";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Mail, MapPin, Calendar } from "lucide-react";
 
@@ -22,7 +23,7 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16" tone="soft">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[hsl(var(--primary)/0.3)] bg-[hsl(var(--primary)/0.08)] mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--primary))] animate-pulse" />
             <span className="text-xs font-medium text-[hsl(var(--primary))] tracking-wider uppercase">
@@ -46,13 +47,13 @@ export default function Contact() {
             Whether you have a project in mind, want to collaborate, or just want to say hi —
             my inbox is always open.
           </p>
-        </div>
+        </Reveal>
 
         {/* Two-column layout */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
 
           {/* Left — contact info */}
-          <div className="flex flex-col gap-6">
+          <Reveal className="flex flex-col gap-6" tone="panel" delay={0.08}>
 
             {/* Email CTA card */}
             <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-7 flex flex-col gap-5">
@@ -133,10 +134,10 @@ export default function Contact() {
                 no back-and-forth needed.
               </p>
             </div>
-          </div>
+          </Reveal>
 
-          {/* Right — Calendly inline embed */}
-          <div className="rounded-2xl border border-[hsl(var(--border))] overflow-hidden">
+          {/* Right - Calendly inline embed */}
+          <Reveal className="rounded-2xl border border-[hsl(var(--border))] overflow-hidden" tone="panel" delay={0.16}>
             <div className="px-6 pt-5 pb-3 border-b border-[hsl(var(--border))] flex items-center gap-2">
               <Calendar size={16} className="text-[hsl(var(--primary))]" />
               <p className="text-[14px] font-semibold text-[hsl(var(--foreground))]">
@@ -148,7 +149,7 @@ export default function Contact() {
               data-url="https://calendly.com/palomoryan23/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=7c3aed"
               style={{ minWidth: "320px", height: "650px" }}
             />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

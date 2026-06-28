@@ -11,7 +11,7 @@ export default function Loader() {
   useEffect(() => {
     if (sessionStorage.getItem("app-loaded")) return;
 
-    setVisible(true);
+    const showTimer = setTimeout(() => setVisible(true), 0);
 
     const intervalRef = { current: null as ReturnType<typeof setInterval> | null };
 
@@ -54,6 +54,7 @@ export default function Loader() {
     window.addEventListener("pageshow", handlePageShow);
 
     return () => {
+      clearTimeout(showTimer);
       clearInterval(intervalRef.current!);
       clearTimeout(minTimer);
       clearTimeout(fallbackTimer);

@@ -1,5 +1,6 @@
 "use client";
 
+import { Reveal } from "@/components/ui/reveal";
 export default function About() {
   const stats = [
     { value: "2+", label: "Year Experience" },
@@ -11,8 +12,8 @@ export default function About() {
   return (
     <section id="about" className="py-28 px-6 max-w-6xl mx-auto">
       <div className="grid md:grid-cols-2 gap-16 items-center">
-        {/* Left — Text */}
-        <div>
+        {/* Left - Text */}
+        <Reveal tone="soft">
           <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-4">
             About Me
           </p>
@@ -61,13 +62,13 @@ export default function About() {
               Say Hello
             </a>
           </div>
-        </div>
+        </Reveal>
 
-        {/* Right — Stats */}
+        {/* Right - Stats */}
         <div className="grid grid-cols-2 gap-4">
-          {stats.map(({ value, label }) => (
+          {stats.map(({ value, label }, index) => (
+            <Reveal key={label} tone="panel" delay={index * 0.08}>
             <div
-              key={label}
               className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 hover:border-[hsl(var(--primary)/0.3)] transition-all duration-300 group"
             >
               <p
@@ -83,10 +84,12 @@ export default function About() {
               </p>
               <p className="text-sm text-[hsl(var(--muted-foreground))]">{label}</p>
             </div>
+            </Reveal>
           ))}
 
           {/* Education card */}
-          <div className="col-span-2 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 hover:border-[hsl(var(--primary)/0.3)] transition-all duration-300">
+          <Reveal className="col-span-2" tone="panel" delay={0.18}>
+          <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 hover:border-[hsl(var(--primary)/0.3)] transition-all duration-300">
             <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--primary))] mb-3">
               Education
             </p>
@@ -105,6 +108,7 @@ export default function About() {
               </span>
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
     </section>

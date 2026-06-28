@@ -1,5 +1,6 @@
 "use client";
 
+import { Reveal } from "@/components/ui/reveal";
 import {
   Globe,
   ShoppingBag,
@@ -71,7 +72,7 @@ export default function Services() {
     <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16" tone="soft">
           <div className="inline-flex md:items-center gap-2 px-4 py-1.5 rounded-full border border-[hsl(var(--primary)/0.3)] bg-[hsl(var(--primary)/0.08)] mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--primary))] animate-pulse" />
             <span className="text-xs font-medium text-[hsl(var(--primary))] tracking-wider uppercase">
@@ -96,15 +97,15 @@ export default function Services() {
             From idea to deployment — I cover the full spectrum of modern web
             development so you can focus on growing your business.
           </p>
-        </div>
+        </Reveal>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map(({ icon: Icon, title, description, tags, gradient, accent }) => (
+        <div className="grid auto-rows-fr sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map(({ icon: Icon, title, description, tags, gradient, accent }, index) => (
+            <Reveal key={title} className="h-full" tone="panel" delay={index * 0.07}>
             <div
-              key={title}
               className={`
-                group relative rounded-2xl border border-[hsl(var(--border))]
+                group relative h-full rounded-2xl border border-[hsl(var(--border))]
                 bg-gradient-to-br ${gradient}
                 p-6 flex flex-col gap-4
                 hover:border-[hsl(var(--primary)/0.4)]
@@ -158,11 +159,12 @@ export default function Services() {
                 }}
               />
             </div>
+            </Reveal>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-14 text-center">
+        <Reveal className="mt-14 text-center" tone="soft" delay={0.1}>
           <p className="text-[hsl(var(--muted-foreground))] text-sm mb-5">
             Have a project in mind? Let&apos;s talk about it.
           </p>
@@ -172,7 +174,7 @@ export default function Services() {
           >
             Get in Touch
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import { Reveal } from "@/components/ui/reveal";
 import { Code2, Briefcase, Users, GitCommit } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -123,13 +125,13 @@ function SvglIcon({ route, name }: { route: SvglRoute; name: string }) {
       : route.light;
 
   return (
-    <img
+    <Image
       src={src}
       alt={name}
       width={20}
       height={20}
       className="w-5 h-5 shrink-0 object-contain"
-      loading="lazy"
+      unoptimized
     />
   );
 }
@@ -261,7 +263,7 @@ export default function Technologies() {
   return (
     <section id="technologies" className="py-28">
       {/* Section Header */}
-      <div className="max-w-6xl mx-auto px-6 mb-16 md:text-start text-center">
+      <Reveal className="max-w-6xl mx-auto px-6 mb-16 md:text-start text-center" tone="soft">
         <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-4">
           Tech Stack
         </p>
@@ -271,43 +273,43 @@ export default function Technologies() {
         <p className="mt-4 text-[hsl(var(--muted-foreground))] md:max-w-md text-[15px]">
           A collection of languages, frameworks, and platforms I use to build modern web experiences.
         </p>
-      </div>
+      </Reveal>
 
       <div className="px-6">
         {/* Marquee Row 1 */}
-        <div className="mb-4">
+        <Reveal className="mb-4" tone="line" delay={0.08}>
           <Marquee speed={40} gradient={false} pauseOnHover>
             {row1.map((tech) => (
               <TechBadge key={tech.name} name={tech.name} category={tech.category} />
             ))}
           </Marquee>
-        </div>
+        </Reveal>
 
         {/* Marquee Row 2 */}
-        <div className="mb-16">
+        <Reveal className="mb-16" tone="line" delay={0.14}>
           <Marquee speed={40} gradient={false} pauseOnHover direction="right">
             {row2.map((tech) => (
               <TechBadge key={tech.name} name={tech.name} category={tech.category} />
             ))}
           </Marquee>
-        </div>
+        </Reveal>
       </div>
 
       {/* Bottom section */}
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Category Legend */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <Reveal className="flex flex-wrap justify-center gap-4 mb-16" tone="soft">
           {Object.entries(categoryColors).map(([cat, colors]) => (
             <div key={cat} className="flex items-center gap-2">
               <span className={`w-2.5 h-2.5 rounded-full border ${colors.bg} ${colors.border}`} />
               <span className="text-xs text-[hsl(var(--muted-foreground))]">{cat}</span>
             </div>
           ))}
-        </div>
+        </Reveal>
 
         {/* Stats Header */}
-        <div className="text-center mb-10">
+        <Reveal className="text-center mb-10" tone="soft">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[hsl(var(--primary)/0.3)] bg-[hsl(var(--primary)/0.08)] mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--primary))] animate-pulse" />
             <span className="text-xs font-medium text-[hsl(var(--primary))] tracking-wider uppercase">
@@ -317,12 +319,14 @@ export default function Technologies() {
           <p className="text-[hsl(var(--muted-foreground))] text-[14px] max-w-sm mx-auto">
             A snapshot of what I&apos;ve built and learned so far.
           </p>
-        </div>
+        </Reveal>
 
         {/* Animated Stats Grid */}
         <div ref={sectionRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat) => (
-            <StatCard key={stat.label} {...stat} triggered={triggered} />
+          {stats.map((stat, index) => (
+            <Reveal key={stat.label} tone="panel" delay={index * 0.08}>
+              <StatCard {...stat} triggered={triggered} />
+            </Reveal>
           ))}
         </div>
       </div>

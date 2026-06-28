@@ -1,5 +1,6 @@
 "use client";
 
+import { Reveal } from "@/components/ui/reveal";
 const experiences = [
   {
     company: "GoCommerce",
@@ -53,7 +54,7 @@ export default function Experience() {
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
-        <div className="mb-12">
+        <Reveal className="mb-12" tone="soft">
           <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-[hsl(var(--muted-foreground))] mb-2">
             Experience
           </p>
@@ -63,13 +64,13 @@ export default function Experience() {
           <p className="text-sm text-[hsl(var(--muted-foreground))]">
             My professional journey building real products for real businesses.
           </p>
-        </div>
+        </Reveal>
 
         {/* Experience rows */}
         <div>
           {experiences.map((exp, index) => (
+            <Reveal key={`${exp.company}-${exp.role}`} tone="line" delay={index * 0.06}>
             <div
-              key={`${exp.company}-${exp.role}`}
               className="group relative grid grid-cols-[140px_1fr] gap-x-6 py-5 border-t border-[hsl(var(--border))] last:border-b"
             >
               {/* Hover accent rule */}
@@ -108,6 +109,7 @@ export default function Experience() {
                 </ul>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
 
@@ -121,7 +123,7 @@ export default function Experience() {
         </div>
 
         {/* Education row */}
-        <div className="grid grid-cols-[140px_1fr] gap-x-6">
+        <Reveal className="grid grid-cols-[140px_1fr] gap-x-6" tone="line" delay={0.1}>
           <div className="pl-2.5 pt-0.5">
             <p className="text-[12px] text-[hsl(var(--muted-foreground))]">2021 – 2025</p>
           </div>
@@ -143,7 +145,7 @@ export default function Experience() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { ExternalLink, Tag } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 
 
 const projects = [
@@ -115,7 +116,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16" tone="soft">
           <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-4">
             Portfolio
           </p>
@@ -126,15 +127,20 @@ export default function Projects() {
             From SaaS platforms to e-commerce storefronts — here&apos;s a selection of work I&apos;ve
             shipped.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project) => (
-            <div
+        <div className="grid auto-rows-fr md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {projects.map((project, index) => (
+            <Reveal
               key={project.name}
-              className={`relative group rounded-2xl border bg-[hsl(var(--card))] p-6 flex flex-col gap-4 transition-all duration-300 hover:border-[hsl(var(--primary)/0.4)] hover:-translate-y-1 hover:shadow-xl hover:shadow-[hsl(var(--primary)/0.05)] ${
+              className={project.featured ? "h-full md:col-span-2 lg:col-span-1" : "h-full"}
+              tone="panel"
+              delay={(index % 3) * 0.08}
+            >
+            <div
+              className={`relative group h-full rounded-2xl border bg-[hsl(var(--card))] p-6 flex flex-col gap-4 transition-all duration-300 hover:border-[hsl(var(--primary)/0.4)] hover:-translate-y-1 hover:shadow-xl hover:shadow-[hsl(var(--primary)/0.05)] ${
                 project.featured
-                  ? "border-[hsl(var(--primary)/0.4)] md:col-span-2 lg:col-span-1"
+                  ? "border-[hsl(var(--primary)/0.4)]"
                   : "border-[hsl(var(--border))]"
               }`}
             >
@@ -188,6 +194,7 @@ export default function Projects() {
                 </a>
               )}
             </div>
+            </Reveal>
           ))}
         </div>
       </div>
