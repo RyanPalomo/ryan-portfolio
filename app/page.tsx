@@ -119,7 +119,7 @@ export default function Home() {
                 </Link>
 
                 <a
-                  href="/resume.pdf"
+                  href="https://drive.google.com/file/d/1eN3Xqb3jM-pmIkuBI1bQG2_1hTMAAwW8/view?usp=sharing"
                   download
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold text-sm hover:border-[hsl(var(--primary)/0.5)] hover:bg-[hsl(var(--primary)/0.05)] transition-all duration-200"
                 >
@@ -199,14 +199,14 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="absolute -top-4 -right-4 bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl px-4 py-2.5 shadow-lg">
+                {/*<div className="absolute -top-4 -right-4 bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl px-4 py-2.5 shadow-lg">
                   <p className="text-xs text-[hsl(var(--muted-foreground))]">
                     Experience
                   </p>
                   <p className="text-sm font-bold text-[hsl(var(--foreground))]">
                     2+ Years <Briefcase size={16} className="inline text-[hsl(var(--primary))]" />
                   </p>
-                </div>
+                </div>*/}
               </div>
             </Reveal>
           </div>
