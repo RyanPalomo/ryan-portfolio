@@ -277,7 +277,7 @@ export default function TechnologiesPage() {
               {[
                 { value: categories.reduce((a, c) => a + c.techs.length, 0) + "+", label: "Technologies" },
                 { value: categories.length.toString(), label: "Categories" },
-                { value: "2+", label: "Years hands-on" },
+                { value: "3+", label: "Years hands-on" },
               ].map(({ value, label }) => (
                 <div key={label} className="flex items-baseline gap-2">
                   <span

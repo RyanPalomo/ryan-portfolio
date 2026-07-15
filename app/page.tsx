@@ -7,7 +7,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Mail, ArrowRight, Download, GraduationCap, Briefcase } from "lucide-react";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
-import Technologies from "@/components/sections/technologies";
+import TechSlider from "@/components/ui/tech-slider";
 import Services from "@/components/sections/services";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -205,7 +205,7 @@ export default function Home() {
                     Experience
                   </p>
                   <p className="text-sm font-bold text-[hsl(var(--foreground))]">
-                    2+ Years <Briefcase size={16} className="inline text-[hsl(var(--primary))]" />
+                    3+ Years <Briefcase size={16} className="inline text-[hsl(var(--primary))]" />
                   </p>
                 </div>*/}
               </div>
@@ -215,7 +215,7 @@ export default function Home() {
       </section>
 
       {/* ── TECHNOLOGIES ── */}
-      <Technologies />
+      <TechSlider />
       <Services />
       <Footer />
     </main>
