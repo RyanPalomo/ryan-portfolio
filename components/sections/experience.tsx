@@ -27,8 +27,8 @@ const experiences = [
   {
     company: "Freelancer",
     role: "Web Developer",
-    period: "Mar 2025 – Present",
-    current: true,
+    period: "Mar 2025 – Nov 2025",
+    current: false,
     bullets: [
       "Built and deployed WordPress websites for clients, delivering responsive, SEO-friendly, and scalable solutions.",
       "Managed product organization, website content, and UI updates to ensure accuracy, consistency, and improved user experience.",
