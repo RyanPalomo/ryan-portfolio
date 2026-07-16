@@ -89,15 +89,23 @@ const categories: Category[] = [
 
 function TechIcon({ route, name }: { route: SvglRoute; name: string }) {
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Always use dark as the SSR default to avoid mismatch
+  const isDark = !mounted ? true : resolvedTheme === "dark";
   const src = route.type === "single" ? route.url : isDark ? route.dark : route.light;
+
   return (
     <Image
       src={src}
       alt={name}
       width={28}
       height={28}
-      className="w-7 h-7 object-contain"
+      className={`w-7 h-7 object-contain transition-opacity duration-300 ${mounted ? "opacity-100" : "opacity-0"}`}
       unoptimized
     />
   );
@@ -222,7 +230,7 @@ function CategoryRow({ cat, index }: { cat: Category; index: number }) {
         </div>
 
         {/* Right — Tech cards grid */}
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="flex-1 grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {cat.techs.map((tech, i) => (
             <div
               key={tech.name}
