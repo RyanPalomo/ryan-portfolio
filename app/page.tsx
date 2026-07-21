@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Mail, ArrowRight, Download, GraduationCap, Briefcase } from "lucide-react";
+import { Mail, ArrowRight, Download, GraduationCap } from "lucide-react";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import Technologies from "@/components/sections/technologies";
@@ -58,7 +58,7 @@ export default function Home() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="flex-1 flex items-center justify-center px-6 pt-24 pb-16">
+      <section className="flex-1 flex items-center justify-center px-6 pt-8 pb-8 md:pt-12 md:pb-10">
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left / Text */}

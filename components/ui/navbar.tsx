@@ -1,109 +1,55 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import Link from "next/link";
-
+import {
+  FolderKanban,
+  Home,
+  Layers3,
+  Mail,
+  Moon,
+  Sun,
+  UserRound,
+} from "lucide-react";
+import { usePathname } from "next/navigation";
+import Dock, { type DockItemData } from "@/components/ui/dock";
 
 const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/technologies", label: "Technologies" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Home", icon: Home },
+  { href: "/about", label: "About", icon: UserRound },
+  { href: "/technologies", label: "Technologies", icon: Layers3 },
+  { href: "/projects", label: "Projects", icon: FolderKanban },
+  { href: "/contact", label: "Contact", icon: Mail },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const mountTimer = setTimeout(() => setMounted(true), 0);
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      clearTimeout(mountTimer);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => clearTimeout(mountTimer);
   }, []);
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[hsl(var(--background)/0.85)] backdrop-blur-md border-b border-[hsl(var(--border))]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-sm font-semibold tracking-widest uppercase text-[hsl(var(--primary))] hover:opacity-80 transition-opacity"
-        >
-          Ryan<span className="text-[hsl(var(--foreground))]">.dev</span>
-        </Link>
+  const items: DockItemData[] = navLinks.map(({ href, label, icon: Icon }) => ({
+    href,
+    label,
+    icon: <Icon size={20} strokeWidth={1.9} />,
+    active: href === "/" ? pathname === href : pathname.startsWith(href),
+  }));
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors duration-200 relative group"
-            >
-              {link.label}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[hsl(var(--primary))] group-hover:w-full transition-all duration-300" />
-            </a>
-          ))}
+  items.push({
+    label: theme === "dark" ? "Use light theme" : "Use dark theme",
+    icon:
+      mounted && theme === "light" ? (
+        <Moon size={20} strokeWidth={1.9} />
+      ) : (
+        <Sun size={20} strokeWidth={1.9} />
+      ),
+    onClick: () => setTheme(theme === "dark" ? "light" : "dark"),
+    separatorBefore: true,
+  });
 
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] hover:border-[hsl(var(--primary)/0.5)] transition-all duration-200"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-          )}
-        </div>
-
-        {/* Mobile */}
-        <div className="md:hidden flex items-center gap-3">
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))]"
-            >
-              {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
-          )}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 text-[hsl(var(--muted-foreground))]"
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-[hsl(var(--background))] border-b border-[hsl(var(--border))] px-6 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-sm text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </nav>
-  );
+  return <Dock items={items} />;
 }

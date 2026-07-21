@@ -66,6 +66,7 @@
   body {
     position: relative;
     min-height: 100vh;
+    padding-bottom: 4.5rem;
     overflow-x: hidden;
     background-color: hsl(var(--background));
     background-image:
