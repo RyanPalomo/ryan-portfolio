@@ -1,335 +1,320 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
-import { Reveal } from "@/components/ui/reveal";
-import { Code2, Briefcase, Users, GitCommit } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const SVGL_BASE = "https://svgl.app/library";
 
-// route: string = same for light & dark
-// route: { light, dark } = theme-aware
 type SvglRoute =
   | { type: "single"; url: string }
   | { type: "themed"; light: string; dark: string };
 
-function svglRoute(path: string | { light: string; dark: string }): SvglRoute {
+function svgl(path: string | { light: string; dark: string }): SvglRoute {
   if (typeof path === "string") return { type: "single", url: `${SVGL_BASE}/${path}` };
-  return {
-    type: "themed",
-    light: `${SVGL_BASE}/${path.light}`,
-    dark: `${SVGL_BASE}/${path.dark}`,
-  };
+  return { type: "themed", light: `${SVGL_BASE}/${path.light}`, dark: `${SVGL_BASE}/${path.dark}` };
 }
 
-// Maps each display name to its SVGL asset path(s)
-const techIconMap: Record<string, SvglRoute> = {
-  // Frontend
-  "HTML & CSS":     svglRoute("html5.svg"),
-  "JavaScript":     svglRoute("javascript.svg"),
-  "TypeScript":     svglRoute("typescript.svg"),
-  "React JS":       svglRoute({ light: "react_light.svg",    dark: "react_dark.svg" }),
-  "Next JS":        svglRoute({ light: "nextjs_icon_dark.svg", dark: "nextjs_icon_dark.svg" }),
-  "Tailwind CSS":   svglRoute("tailwindcss.svg"),
-  "Bootstrap":      svglRoute("bootstrap.svg"),
-  // Backend
-  "Node JS":        svglRoute("nodejs.svg"),
-  "Express JS":     svglRoute({ light: "expressjs.svg", dark: "expressjs_dark.svg" }),
-  "PHP":            svglRoute({ light: "php.svg", dark: "php_dark.svg" }),
-  "Python":         svglRoute("python.svg"),
-  "Java":           svglRoute("java.svg"),
-  "C#":             svglRoute("csharp.svg"),
-  "Ruby":           svglRoute("ruby.svg"),
-  // Database
-  "MySQL":          svglRoute({ light: "mysql-icon-light.svg", dark: "mysql-icon-dark.svg" }),
-  "PostgreSQL":     svglRoute("postgresql.svg"),
-  "Supabase":       svglRoute("supabase.svg"),
-  // Platform
-  "Shopify / Liquid": svglRoute("shopify.svg"),
-  "WordPress":      svglRoute("wordpress.svg"), 
-  
-  // Tools
-  "Git & GitHub":   svglRoute({ light: "github_light.svg",  dark: "github_dark.svg" }),
-  "Figma":          svglRoute("figma.svg"),
+type Tech = {
+  name: string;
+  icon: SvglRoute;
+  note?: string;
 };
 
-const techByCategory = {
-  Frontend: ["HTML & CSS", "JavaScript", "TypeScript", "React JS", "Next JS", "Tailwind CSS", "Bootstrap"],
-  Backend: ["Node JS", "Express JS", "PHP", "Python", "Java", "C#", "Ruby"],
-  Database: ["MySQL", "PostgreSQL", "Supabase"],
-  Platform: ["Shopify / Liquid", "WordPress", "Squarespace"],
-  Tools: ["Git & GitHub", "Figma"],
+type Category = {
+  label: string;
+  description: string;
+  accent: string;
+  techs: Tech[];
 };
 
-const categoryColors: Record<string, { bg: string; text: string; border: string }> = {
-  Frontend: { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/20" },
-  Backend: { bg: "bg-emerald-500/10", text: "text-emerald-400", border: "border-emerald-500/20" },
-  Database: { bg: "bg-orange-500/10", text: "text-orange-400", border: "border-orange-500/20" },
-  Platform: { bg: "bg-cyan-500/10", text: "text-cyan-400", border: "border-cyan-500/20" },
-  Tools: { bg: "bg-zinc-500/10", text: "text-zinc-400", border: "border-zinc-500/20" },
-};
-
-const stats = [
+const categories: Category[] = [
   {
-    icon: Briefcase,
-    value: 9,
-    suffix: "+",
-    label: "Projects Shipped",
-    description: "From MVPs to full-scale web apps",
-    accent: "hsl(214, 46%, 48%)",
+    label: "Frontend",
+    description: "Interfaces users see and touch",
+    accent: "#6082e6",
+    techs: [
+      { name: "HTML & CSS",    icon: svgl("html5.svg"),           },
+      { name: "JavaScript",    icon: svgl("javascript.svg"),        },
+      { name: "TypeScript",    icon: svgl("typescript.svg"),        },
+      { name: "React JS",      icon: svgl({ light: "react_light.svg", dark: "react_dark.svg" }),  },
+      { name: "Next JS",       icon: svgl({ light: "nextjs_icon_dark.svg", dark: "nextjs_icon_dark.svg" }),  },
+      { name: "Tailwind CSS",  icon: svgl("tailwindcss.svg"),      },
+      { name: "Bootstrap",     icon: svgl("bootstrap.svg"),        },
+    ],
   },
   {
-    icon: Code2,
-    value: 20,
-    suffix: "+",
-    label: "Technologies",
-    description: "Languages, frameworks & platforms",
-    accent: "hsl(210, 42%, 44%)",
+    label: "Backend",
+    description: "Servers, APIs, and logic layers",
+    accent: "#34d399",
+    techs: [
+      { name: "Node JS",    icon: svgl("nodejs.svg"),              },
+      { name: "Express JS", icon: svgl({ light: "expressjs.svg", dark: "expressjs_dark.svg" }), },
+      { name: "PHP",        icon: svgl({ light: "php.svg", dark: "php_dark.svg" }), },
+      { name: "Python",     icon: svgl("python.svg"),              },
+      { name: "Java",       icon: svgl("java.svg"),                },
+      { name: "C#",         icon: svgl("csharp.svg"),              },
+      { name: "Ruby",       icon: svgl("ruby.svg"),                },
+    ],
   },
   {
-    icon: GitCommit,
-    value: 3,
-    suffix: "+ yrs",
-    label: "Years Building",
-    description: "Coding, shipping, and improving",
-    accent: "hsl(172, 28%, 44%)",
+    label: "Database",
+    description: "Data storage and retrieval",
+    accent: "#fb923c",
+    techs: [
+      { name: "MySQL",      icon: svgl({ light: "mysql-icon-light.svg", dark: "mysql-icon-dark.svg" }), },
+      { name: "PostgreSQL", icon: svgl("postgresql.svg"),          },
+      { name: "Supabase",   icon: svgl("supabase.svg"),            },
+    ],
   },
   {
-    icon: Users,
-    value: 100,
-    suffix: "%",
-    label: "Client Satisfaction",
-    description: "Happy clients, clean deliveries",
-    accent: "hsl(42, 34%, 56%)",
+    label: "Platforms",
+    description: "CMS and e-commerce ecosystems",
+    accent: "#22d3ee",
+    techs: [
+      { name: "Shopify",    icon: svgl("shopify.svg"),             },
+      { name: "WordPress",  icon: svgl("wordpress.svg"),           },
+    ],
+  },
+  {
+    label: "Tools",
+    description: "Workflow, design, and DevOps",
+    accent: "#a78bfa",
+    techs: [
+      { name: "Git & GitHub", icon: svgl({ light: "github_light.svg", dark: "github_dark.svg" }), },
+      { name: "Figma",        icon: svgl("figma.svg"),             },
+    ],
   },
 ];
 
-const allTech = Object.entries(techByCategory).flatMap(([cat, items]) =>
-  items.map((name) => ({ name, category: cat }))
-);
-
-const row1 = allTech.slice(0, Math.ceil(allTech.length / 2));
-const row2 = allTech.slice(Math.ceil(allTech.length / 2));
-
-function SvglIcon({ route, name }: { route: SvglRoute; name: string }) {
+function TechIcon({ route, name }: { route: SvglRoute; name: string }) {
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
 
-  const src =
-    route.type === "single"
-      ? route.url
-      : isDark
-      ? route.dark
-      : route.light;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Always use dark as the SSR default to avoid mismatch
+  const isDark = !mounted ? true : resolvedTheme === "dark";
+  const src = route.type === "single" ? route.url : isDark ? route.dark : route.light;
 
   return (
     <Image
       src={src}
       alt={name}
-      width={20}
-      height={20}
-      className="w-5 h-5 shrink-0 object-contain"
+      width={28}
+      height={28}
+      className={`w-7 h-7 object-contain transition-opacity duration-300 ${mounted ? "opacity-100" : "opacity-0"}`}
       unoptimized
     />
   );
 }
 
-function TechBadge({ name, category }: { name: string; category: string }) {
-  const colors = categoryColors[category];
-  const route = techIconMap[name];
+function TechCard({ tech, accent }: { tech: Tech; accent: string }) {
+  const [hovered, setHovered] = useState(false);
 
   return (
     <div
-      className={`flex items-center gap-2.5 px-5 py-3 mx-3 rounded-xl border text-sm font-medium whitespace-nowrap ${colors.bg} ${colors.text} ${colors.border}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative flex flex-col items-center gap-3 p-5 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] cursor-default transition-all duration-300 hover:-translate-y-1 group"
+      style={{
+        borderColor: hovered ? `${accent}50` : undefined,
+        boxShadow: hovered ? `0 8px 30px ${accent}15` : undefined,
+      }}
     >
-      {route && <SvglIcon route={route} name={name} />}
-      <span>{name}</span>
-      <span
-        className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold uppercase tracking-wider opacity-60 border ${colors.border} ${colors.bg}`}
-      >
-        {category}
-      </span>
-    </div>
-  );
-}
-
-function useCountUp(target: number, duration = 1800, triggered: boolean = false) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!triggered) return;
-    let start: number | null = null;
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [target, duration, triggered]);
-
-  return count;
-}
-
-function StatCard({
-  icon: Icon,
-  value,
-  suffix,
-  label,
-  description,
-  accent,
-  triggered,
-}: (typeof stats)[0] & { triggered: boolean }) {
-  const count = useCountUp(value, 1800, triggered);
-
-  return (
-    <div className="group relative rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 flex flex-col gap-4 hover:border-[hsl(var(--primary)/0.4)] hover:shadow-xl hover:shadow-[hsl(var(--primary)/0.08)] transition-all duration-300 overflow-hidden">
-      {/* Background glow */}
+      {/* Icon container */}
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{ background: `radial-gradient(circle at top left, ${accent}10, transparent 60%)` }}
+        className="w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300"
+        style={{
+          background: hovered ? `${accent}15` : "hsl(var(--secondary))",
+          border: `1px solid ${hovered ? `${accent}30` : "transparent"}`,
+        }}
+      >
+        <TechIcon route={tech.icon} name={tech.name} />
+      </div>
+
+      {/* Name */}
+      <p className="text-[13px] font-semibold text-[hsl(var(--foreground))] text-center leading-tight">
+        {tech.name}
+      </p>
+
+      {/* Note */}
+      {tech.note && (
+        <p className="text-[11px] text-[hsl(var(--muted-foreground))] text-center">
+          {tech.note}
+        </p>
+      )}
+
+      {/* Accent dot on hover */}
+      <div
+        className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full transition-all duration-300"
+        style={{
+          background: accent,
+          opacity: hovered ? 1 : 0,
+          transform: hovered ? "scale(1)" : "scale(0)",
+        }}
       />
-
-      {/* Top row — icon + accent bar */}
-      <div className="flex items-center justify-between">
-        <div
-          className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-          style={{ background: `${accent}15`, border: `1px solid ${accent}30` }}
-        >
-          <Icon size={20} style={{ color: accent }} />
-        </div>
-        <div
-          className="h-1 w-12 rounded-full opacity-30 group-hover:opacity-60 group-hover:w-16 transition-all duration-500"
-          style={{ background: accent }}
-        />
-      </div>
-
-      {/* Animated number */}
-      <div className="flex items-end gap-1">
-        <span
-          className="text-5xl font-extrabold leading-none tracking-tight tabular-nums"
-          style={{
-            background: `linear-gradient(135deg, ${accent}, hsl(var(--primary)))`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          {count}
-        </span>
-        <span
-          className="text-2xl font-bold mb-1 leading-none"
-          style={{
-            background: `linear-gradient(135deg, ${accent}, hsl(var(--primary)))`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          {suffix}
-        </span>
-      </div>
-
-      {/* Label + description */}
-      <div className="flex flex-col gap-1 border-t border-[hsl(var(--border)/0.6)] pt-3">
-        <p className="text-[14px] font-semibold text-[hsl(var(--foreground))]">{label}</p>
-        <p className="text-[12px] text-[hsl(var(--muted-foreground))] leading-relaxed">{description}</p>
-      </div>
     </div>
   );
 }
 
-export default function Technologies() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [triggered, setTriggered] = useState(false);
+function CategoryRow({ cat, index }: { cat: Category; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTriggered(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
+  const isEven = index % 2 === 0;
+
   return (
-    <section id="technologies" className="py-28">
-      {/* Section Header */}
-      <Reveal className="max-w-6xl mx-auto px-6 mb-16 md:text-start text-center" tone="soft">
-        <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-4">
-          Tech Stack
-        </p>
-        <h2 className="text-4xl font-bold text-[hsl(var(--foreground))]">
-          Tools I Work With
-        </h2>
-        <p className="mt-4 text-[hsl(var(--muted-foreground))] md:max-w-md text-[15px]">
-          A collection of languages, frameworks, and platforms I use to build modern web experiences.
-        </p>
-      </Reveal>
-
-      <div className="px-6">
-        {/* Marquee Row 1 */}
-        <Reveal className="mb-4" tone="line" delay={0.08}>
-          <Marquee speed={40} gradient={false} pauseOnHover>
-            {row1.map((tech) => (
-              <TechBadge key={tech.name} name={tech.name} category={tech.category} />
-            ))}
-          </Marquee>
-        </Reveal>
-
-        {/* Marquee Row 2 */}
-        <Reveal className="mb-16" tone="line" delay={0.14}>
-          <Marquee speed={40} gradient={false} pauseOnHover direction="right">
-            {row2.map((tech) => (
-              <TechBadge key={tech.name} name={tech.name} category={tech.category} />
-            ))}
-          </Marquee>
-        </Reveal>
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+      style={{ transitionDelay: `${index * 60}ms` }}
+    >
+      {/* Divider with category label */}
+      <div className="flex items-center gap-4 mb-8">
+        <div className="h-px flex-1 bg-[hsl(var(--border))]" />
+        <div
+          className="flex items-center gap-2.5 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest"
+          style={{
+            color: cat.accent,
+            borderColor: `${cat.accent}30`,
+            background: `${cat.accent}08`,
+          }}
+        >
+          <span
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ background: cat.accent }}
+          />
+          {cat.label}
+        </div>
+        <div className="h-px flex-1 bg-[hsl(var(--border))]" />
       </div>
 
-      {/* Bottom section */}
-      <div className="max-w-6xl mx-auto px-6">
-
-        {/* Category Legend */}
-        <Reveal className="flex flex-wrap justify-center gap-4 mb-16" tone="soft">
-          {Object.entries(categoryColors).map(([cat, colors]) => (
-            <div key={cat} className="flex items-center gap-2">
-              <span className={`w-2.5 h-2.5 rounded-full border ${colors.bg} ${colors.border}`} />
-              <span className="text-xs text-[hsl(var(--muted-foreground))]">{cat}</span>
-            </div>
-          ))}
-        </Reveal>
-
-        {/* Stats Header */}
-        <Reveal className="text-center mb-10" tone="soft">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[hsl(var(--primary)/0.3)] bg-[hsl(var(--primary)/0.08)] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--primary))] animate-pulse" />
-            <span className="text-xs font-medium text-[hsl(var(--primary))] tracking-wider uppercase">
-              By The Numbers
-            </span>
+      <div className={`flex flex-col md:flex-row gap-8 items-start ${!isEven ? "md:flex-row-reverse" : ""}`}>
+        {/* Left — Category info */}
+        <div className="md:w-56 shrink-0">
+          <div className="sticky top-24">
+            {/* Big faded watermark label */}
+            <p
+              className="text-7xl font-black leading-none tracking-tighter select-none pointer-events-none mb-4"
+              style={{
+                color: cat.accent,
+                opacity: 0.07,
+              }}
+            >
+              {cat.label}
+            </p>
+            <p className="text-[13px] text-[hsl(var(--muted-foreground))] leading-relaxed -mt-2">
+              {cat.description}
+            </p>
+            <p
+              className="mt-3 text-xs font-semibold"
+              style={{ color: cat.accent }}
+            >
+              {cat.techs.length} technologies
+            </p>
           </div>
-          <p className="text-[hsl(var(--muted-foreground))] text-[14px] max-w-sm mx-auto">
-            A snapshot of what I&apos;ve built and learned so far.
-          </p>
-        </Reveal>
+        </div>
 
-        {/* Animated Stats Grid */}
-        <div ref={sectionRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat, index) => (
-            <Reveal key={stat.label} tone="panel" delay={index * 0.08}>
-              <StatCard {...stat} triggered={triggered} />
-            </Reveal>
+        {/* Right — Tech cards grid */}
+        <div className="flex-1 grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {cat.techs.map((tech, i) => (
+            <div
+              key={tech.name}
+              className="transition-all duration-500"
+              style={{
+                transitionDelay: visible ? `${index * 60 + i * 50}ms` : "0ms",
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(12px)",
+              }}
+            >
+              <TechCard tech={tech} accent={cat.accent} />
+            </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
+  );
+}
+
+export default function TechnologiesPage() {
+  return (
+    <main className="min-h-screen flex flex-col">
+
+      <section className="flex-1 pt-32 pb-20 px-6">
+        <div className="max-w-6xl mx-auto">
+
+          {/* Page header */}
+          <div className="mb-20">
+            <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-4">
+              Stack Directory
+            </p>
+            <h1 className="text-5xl md:text-6xl font-bold text-[hsl(var(--foreground))] leading-tight mb-6">
+              Tools I{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Build With
+              </span>
+            </h1>
+            <p className="text-[hsl(var(--muted-foreground))] text-[15px] leading-relaxed max-w-xl">
+              A curated directory of every language, framework, platform, and tool
+              in my active stack — organized by discipline.
+            </p>
+
+            {/* Quick stats row */}
+            <div className="flex flex-wrap gap-6 mt-10">
+              {[
+                { value: categories.reduce((a, c) => a + c.techs.length, 0) + "+", label: "Technologies" },
+                { value: categories.length.toString(), label: "Categories" },
+                { value: "3+", label: "Years hands-on" },
+              ].map(({ value, label }) => (
+                <div key={label} className="flex items-baseline gap-2">
+                  <span
+                    className="text-3xl font-extrabold"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--primary)), #a78bfa)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    {value}
+                  </span>
+                  <span className="text-sm text-[hsl(var(--muted-foreground))]">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Category rows */}
+          <div className="space-y-20">
+            {categories.map((cat, index) => (
+              <CategoryRow key={cat.label} cat={cat} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+    </main>
   );
 }

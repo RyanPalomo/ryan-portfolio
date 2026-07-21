@@ -7,7 +7,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Mail, ArrowRight, Download, GraduationCap } from "lucide-react";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
-import Technologies from "@/components/sections/technologies";
+import TechSlider from "@/components/ui/tech-slider";
 import Services from "@/components/sections/services";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -119,8 +119,9 @@ export default function Home() {
                 </Link>
 
                 <a
-                  href="https://drive.google.com/file/d/1eN3Xqb3jM-pmIkuBI1bQG2_1hTMAAwW8/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1sb29qT7us4X8ufSawaqOolQh9L5-Tdd-/view?usp=sharing"
                   download
+                  target="_blank"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold text-sm hover:border-[hsl(var(--primary)/0.5)] hover:bg-[hsl(var(--primary)/0.05)] transition-all duration-200"
                 >
                   <Download size={16} />
@@ -189,7 +190,7 @@ export default function Home() {
 
                 <div className="absolute -bottom-4 -left-4 bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl px-4 py-2.5 shadow-lg">
                   <p className="text-xs text-[hsl(var(--muted-foreground))]">
-                    Graduation
+                    Graduated
                   </p>
                   <div className="flex items-center gap-2">
                     <p className="text-sm font-bold text-[hsl(var(--foreground))]">
@@ -204,7 +205,7 @@ export default function Home() {
                     Experience
                   </p>
                   <p className="text-sm font-bold text-[hsl(var(--foreground))]">
-                    2+ Years <Briefcase size={16} className="inline text-[hsl(var(--primary))]" />
+                    3+ Years <Briefcase size={16} className="inline text-[hsl(var(--primary))]" />
                   </p>
                 </div>*/}
               </div>
@@ -214,7 +215,7 @@ export default function Home() {
       </section>
 
       {/* ── TECHNOLOGIES ── */}
-      <Technologies />
+      <TechSlider />
       <Services />
       <Footer />
     </main>

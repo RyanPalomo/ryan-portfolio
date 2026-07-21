@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/ui/reveal";
 export default function About() {
   const stats = [
-    { value: "2+", label: "Year Experience" },
+    { value: "3+", label: "Year Experience" },
     { value: "9+", label: "Projects Shipped" },
     { value: "3", label: "Roles Held" },
     { value: "2025", label: "PUP Grad" },
