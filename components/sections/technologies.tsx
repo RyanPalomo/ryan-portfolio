@@ -92,7 +92,8 @@ function TechIcon({ route, name }: { route: SvglRoute; name: string }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const mountTimer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(mountTimer);
   }, []);
 
   // Always use dark as the SSR default to avoid mismatch

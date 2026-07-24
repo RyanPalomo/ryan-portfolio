@@ -58,7 +58,7 @@ export default function Home() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="flex-1 flex items-center justify-center px-6 pt-8 pb-8 md:pt-12 md:pb-10">
+      <section className="flex-1 flex items-center justify-center px-6 pt-28 pb-10 md:pt-32 md:pb-12">
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left / Text */}
