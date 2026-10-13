@@ -74,15 +74,26 @@ const categories: Category[] = [
     techs: [
       { name: "Shopify",    icon: svgl("shopify.svg"),             },
       { name: "WordPress",  icon: svgl("wordpress.svg"),           },
+
     ],
   },
   {
     label: "Tools",
-    description: "Workflow, design, and DevOps",
+    description: "Workflow, design, DevOps and AI tools",
     accent: "#a78bfa",
     techs: [
-      { name: "Git & GitHub", icon: svgl({ light: "github_light.svg", dark: "github_dark.svg" }), },
+      { name: "Git",          icon: svgl ("git.svg")                },
+      { name: "GitHub",       icon: svgl({ light: "github_light.svg", dark: "github_dark.svg" }), },
+      { name: "VS Code",    icon: svgl("vscode.svg"),              },
+      { name: "Dreamweaver",      icon: svgl("dw.svg"),              },
       { name: "Figma",        icon: svgl("figma.svg"),             },
+      { name: "Photoshop",     icon: svgl("photoshop.svg")          },
+      { name: "Vercel",       icon: svgl("vercel.svg"),            },
+      { name: "Docker",       icon: svgl("docker.svg")             },
+      { name: "Postman",      icon: svgl("postman.svg")            },
+      { name: "Claude AI", icon: svgl("claude-ai-icon.svg") },
+      { name: "Codex",     icon: svgl({ light: "codex_light.svg", dark: "codex_dark.svg" }) },
+      { name: "Gemini AI", icon: svgl("gemini.svg") },
     ],
   },
 ];

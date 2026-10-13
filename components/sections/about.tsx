@@ -43,7 +43,7 @@ export default function About() {
             </p>
             <p>
               I graduated <span className="text-[hsl(var(--foreground))] font-medium">Magna Cum Laude</span> from
-              the Polytechnic University of the Philippines with a BS in Information Technology, and
+              the Polytechnic University of the Philippines with a BS in Information Technology Degree, and
               I love turning complex problems into clean, user-friendly products.
             </p>
           </div>

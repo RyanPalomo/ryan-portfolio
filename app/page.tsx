@@ -119,7 +119,7 @@ export default function Home() {
                 </Link>
 
                 <a
-                  href="https://drive.google.com/file/d/1sb29qT7us4X8ufSawaqOolQh9L5-Tdd-/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1yhTyPfoBr80q89XeQMmSqjdGid5Tfu4a/view?usp=sharing"
                   download
                   target="_blank"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold text-sm hover:border-[hsl(var(--primary)/0.5)] hover:bg-[hsl(var(--primary)/0.05)] transition-all duration-200"
