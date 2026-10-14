@@ -51,8 +51,19 @@ const techIconMap: Record<string, SvglRoute> = {
   "WordPress":      svglRoute("wordpress.svg"), 
   
   // Tools
-  "Git & GitHub":   svglRoute({ light: "github_light.svg",  dark: "github_dark.svg" }),
+  "Git": svglRoute ("git.svg"),
+  "Github":   svglRoute({ light: "github_light.svg",  dark: "github_dark.svg" }),
+  "VS Code":       svglRoute("vscode.svg"),
+  "Dreamweaver":    svglRoute("dw.svg"),
   "Figma":          svglRoute("figma.svg"),
+  "Photoshop":      svglRoute("photoshop.svg"),
+  "Vercel":         svglRoute("vercel.svg"),
+  "Docker":        svglRoute("docker.svg"),
+  "Postman":        svglRoute("postman.svg"),
+  "Claude AI":        svglRoute("claude-ai-icon.svg"),
+  "Codex":        svglRoute({ light: "codex_light.svg", dark: "codex_dark.svg" }),
+  "Gemini AI":        svglRoute("gemini.svg"),
+
 };
 
 const techByCategory = {
@@ -60,7 +71,7 @@ const techByCategory = {
   Backend: ["Node JS", "Express JS", "PHP", "Python", "Java", "C#", "Ruby"],
   Database: ["MySQL", "PostgreSQL", "Supabase"],
   Platform: ["Shopify / Liquid", "WordPress", "Squarespace"],
-  Tools: ["Git & GitHub", "Figma"],
+  Tools: ["Git", "GitHub", "Figma", "Photoshop", "Vercel", "Docker", "Postman", "Claude AI", "Codex", "Gemini AI"],
 };
 
 const categoryColors: Record<string, { bg: string; text: string; border: string }> = {
