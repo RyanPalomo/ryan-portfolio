@@ -5,13 +5,16 @@ import { useEffect, useRef, useState } from "react";
 export default function Loader() {
   const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
-  const [visible, setVisible] = useState(false);
+  // Render the loader in the initial HTML so page content cannot flash before
+  // this client component hydrates.
+  const [visible, setVisible] = useState(true);
   const finishedRef = useRef(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("app-loaded")) return;
-
-    const showTimer = setTimeout(() => setVisible(true), 0);
+    if (sessionStorage.getItem("app-loaded")) {
+      const hideTimer = setTimeout(() => setVisible(false), 0);
+      return () => clearTimeout(hideTimer);
+    }
 
     const intervalRef = { current: null as ReturnType<typeof setInterval> | null };
 
@@ -54,7 +57,6 @@ export default function Loader() {
     window.addEventListener("pageshow", handlePageShow);
 
     return () => {
-      clearTimeout(showTimer);
       clearInterval(intervalRef.current!);
       clearTimeout(minTimer);
       clearTimeout(fallbackTimer);

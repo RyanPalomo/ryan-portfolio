@@ -34,6 +34,7 @@ export default function RootLayout({
         className={`${jakarta.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
+        <Loader />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -41,7 +42,6 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        <Loader />
       </body>
     </html>
   );
