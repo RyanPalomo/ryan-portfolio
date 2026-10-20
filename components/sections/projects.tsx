@@ -42,15 +42,6 @@ const projects = [
     featured: false,
   },
   {
-    name: "Eufy PH",
-    description:
-      "Shopify e-commerce store for Eufy Philippines, featuring smart home and security products. Delivered a clean, conversion-optimized storefront with custom Liquid components.",
-    tech: ["Shopify", "Liquid", "HTML", "CSS"],
-    live: "https://eufy.ph/",
-    status: "Live",
-    featured: false,
-  },
-  {
     name: "Kinetic by Garmin",
     description:
       "Official Philippine Shopify storefront for Garmin's Kinetic brand. Focused on sports and fitness products with performance-optimized pages and brand-aligned design.",
@@ -60,12 +51,21 @@ const projects = [
     featured: false,
   },
   {
+    name: "Eufy PH",
+    description:
+      "Shopify e-commerce store for Eufy Philippines, featuring smart home and security products. Delivered a clean, conversion-optimized storefront with custom Liquid components.",
+    tech: ["Shopify", "Liquid", "HTML", "CSS"],
+    live: null,
+    status: "Completed",
+    featured: false,
+  },
+  {
     name: "Soundcore PH",
     description:
       "Shopify storefront for Soundcore Philippines, a premium audio brand by Anker. Built custom Liquid sections for product showcases and promotional campaigns.",
     tech: ["Shopify", "Liquid", "HTML", "CSS"],
-    live: "https://soundcore.ph/",
-    status: "Live",
+    live: null,
+    status: "Completed",
     featured: false,
   },
   {
