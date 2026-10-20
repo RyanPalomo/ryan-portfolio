@@ -1,18 +1,35 @@
 "use client";
 
-import { ExternalLink, Tag } from "lucide-react";
+import { Blocks, ExternalLink, PanelsTopLeft, Store, Tag, TrendingUp } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
+type Project = {
+  name: string;
+  description: string;
+  tech: string[];
+  live: string | null;
+  status: "Live" | "In Progress" | "Completed";
+  featured: boolean;
+};
 
-const projects = [
+const projects: Project[] = [
   {
     name: "Zupport",
     description:
-      "An all-in-one AI-powered customer support SaaS platform built for Philippine e-commerce brands. Unifies Shopee, Lazada, TikTok, and Shopify messages into a single smart inbox — complete with AI reply drafting, automation, and analytics.",
+      "Co-founded this customer-support SaaS platform and built 10–15 REST API endpoints plus 8+ major features, including authentication, role-based access, ticket management, live conversations, analytics, and tenant management. Deployed on Vercel and used by a paying client company.",
     tech: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "Vercel"],
     live: "https://zupport.app/",
     status: "Live",
     featured: true,
+  },
+  {
+    name: "Pulse Preorder",
+    description:
+      "A Shopify embedded app for managing preorders. Built with Remix, TypeScript, Prisma, and PostgreSQL, integrating Shopify's GraphQL Admin API. Diagnosed and fixed a production database connectivity issue caused by an IPv4/IPv6 connection-pooling mismatch.",
+    tech: ["Remix", "TypeScript", "Prisma", "PostgreSQL", "Shopify GraphQL"],
+    live: null,
+    status: "In Progress",
+    featured: false,
   },
   {
     name: "Website Portfolio V2",
@@ -98,7 +115,7 @@ const projects = [
   {
     name: "EcoMend",
     description:
-      "Capstone project — a web app that uses machine learning to identify waste from images and leverages Gemini AI to suggest creative ways to repurpose it, promoting sustainable habits.",
+      "Capstone full-stack web app connecting a PHP and MySQL application to a separate Python CNN service with 78–80% image-classification accuracy. Integrated the Gemini API to recommend sustainable reuse ideas for identified waste.",
     tech: ["HTML", "Bootstrap", "JavaScript", "PHP", "Python", "MySQL", "Gemini AI"],
     live: null,
     status: "Completed",
@@ -112,6 +129,13 @@ const statusStyles: Record<string, string> = {
   Completed: "bg-blue-500/10 text-blue-400 border-blue-500/20",
 };
 
+const shopifyImpact = [
+  { value: "25+", label: "Landing pages", icon: PanelsTopLeft },
+  { value: "45+", label: "Custom sections", icon: Blocks },
+  { value: "5", label: "Live storefronts", icon: Store },
+  { value: "89–103%", label: "Sales growth on 3 stores", icon: TrendingUp },
+];
+
 export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6">
@@ -120,13 +144,52 @@ export default function Projects() {
           <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-4">
             Portfolio
           </p>
-          <h2 className="text-4xl font-bold text-[hsl(var(--foreground))]">
+          <h1 className="text-4xl font-bold text-[hsl(var(--foreground))]">
             Projects I&apos;ve Built
-          </h2>
+          </h1>
           <p className="mt-4 text-[hsl(var(--muted-foreground))] max-w-md mx-auto text-[15px]">
             From SaaS platforms to e-commerce storefronts — here&apos;s a selection of work I&apos;ve
             shipped.
           </p>
+        </Reveal>
+
+        <Reveal className="mb-10" tone="panel" delay={0.08}>
+          <div className="rounded-2xl border border-[hsl(var(--primary)/0.28)] bg-[hsl(var(--card))] p-6 md:p-8">
+            <div className="flex flex-col gap-3 mb-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-2">
+                  Shopify delivery impact
+                </p>
+                <h2 className="text-2xl font-bold text-[hsl(var(--foreground))]">
+                  Production work across consumer-electronics brands
+                </h2>
+              </div>
+              <p className="max-w-lg text-sm leading-relaxed text-[hsl(var(--muted-foreground))] md:text-right">
+                Converted 100% of assigned Figma designs into responsive Liquid, HTML, CSS,
+                and JavaScript across Anker PH, Kinetic by Garmin, Eufy PH, Soundcore PH,
+                and Heyday PH.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {shopifyImpact.map(({ value, label, icon: Icon }) => (
+                <div
+                  key={label}
+                  className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--secondary)/0.45)] p-4"
+                >
+                  <Icon size={17} className="mb-3 text-[hsl(var(--primary))]" />
+                  <p className="text-2xl font-bold text-[hsl(var(--foreground))]">{value}</p>
+                  <p className="mt-1 text-xs text-[hsl(var(--muted-foreground))]">{label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 grid gap-2 text-sm text-[hsl(var(--muted-foreground))] md:grid-cols-3">
+              <p>• Schema-driven sections editable by Key Account Managers</p>
+              <p>• 6–10 Shopify apps and integrations researched or implemented</p>
+              <p>• Production fixes and improved GTmetrix grades</p>
+            </div>
+          </div>
         </Reveal>
 
         <div className="grid auto-rows-fr md:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -32,6 +32,7 @@ const techIconMap: Record<string, SvglRoute> = {
   "TypeScript":     svglRoute("typescript.svg"),
   "React JS":       svglRoute({ light: "react_light.svg",    dark: "react_dark.svg" }),
   "Next JS":        svglRoute({ light: "nextjs_icon_dark.svg", dark: "nextjs_icon_dark.svg" }),
+  "Remix":          svglRoute({ light: "remix_light.svg", dark: "remix_dark.svg" }),
   "Tailwind CSS":   svglRoute("tailwindcss.svg"),
   "Bootstrap":      svglRoute("bootstrap.svg"),
   // Backend
@@ -42,17 +43,20 @@ const techIconMap: Record<string, SvglRoute> = {
   "Java":           svglRoute("java.svg"),
   "C#":             svglRoute("csharp.svg"),
   "Ruby":           svglRoute("ruby.svg"),
+  "C++":            svglRoute("c-plusplus.svg"),
   // Database
   "MySQL":          svglRoute({ light: "mysql-icon-light.svg", dark: "mysql-icon-dark.svg" }),
   "PostgreSQL":     svglRoute("postgresql.svg"),
   "Supabase":       svglRoute("supabase.svg"),
+  "Prisma":         svglRoute("prisma.svg"),
   // Platform
   "Shopify / Liquid": svglRoute("shopify.svg"),
+  "Shopify CLI":    svglRoute("shopify.svg"),
   "WordPress":      svglRoute("wordpress.svg"), 
   
   // Tools
   "Git": svglRoute ("git.svg"),
-  "Github":   svglRoute({ light: "github_light.svg",  dark: "github_dark.svg" }),
+  "GitHub":   svglRoute({ light: "github_light.svg",  dark: "github_dark.svg" }),
   "VS Code":       svglRoute("vscode.svg"),
   "Dreamweaver":    svglRoute("dw.svg"),
   "Figma":          svglRoute("figma.svg"),
@@ -67,10 +71,10 @@ const techIconMap: Record<string, SvglRoute> = {
 };
 
 const techByCategory = {
-  Frontend: ["HTML & CSS", "JavaScript", "TypeScript", "React JS", "Next JS", "Tailwind CSS", "Bootstrap"],
-  Backend: ["Node JS", "Express JS", "PHP", "Python", "Java", "C#", "Ruby"],
-  Database: ["MySQL", "PostgreSQL", "Supabase"],
-  Platform: ["Shopify / Liquid", "WordPress", "Squarespace"],
+  Frontend: ["HTML & CSS", "JavaScript", "TypeScript", "React JS", "Next JS", "Remix", "Tailwind CSS", "Bootstrap"],
+  Backend: ["Node JS", "Express JS", "PHP", "Python", "Java", "C#", "C++", "Ruby"],
+  Database: ["MySQL", "PostgreSQL", "Supabase", "Prisma"],
+  Platform: ["Shopify / Liquid", "Shopify CLI", "WordPress", "Squarespace"],
   Tools: ["Git", "GitHub", "Figma", "Photoshop", "Vercel", "Docker", "Postman", "Claude AI", "Codex", "Gemini AI"],
 };
 

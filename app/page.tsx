@@ -102,10 +102,9 @@ export default function Home() {
 
               {/* Description */}
               <p className="text-[hsl(var(--muted-foreground))] text-[15px] leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
-                Based in the Philippines, I build modern web solutions — from
-                AI-powered SaaS platforms to high-converting Shopify stores.
-                Magna Cum Laude graduate of PUP with a passion for clean code
-                and great UX.
+                Based in the Philippines, I build client-facing products end to
+                end — from responsive Shopify storefronts to SaaS applications
+                backed by Node.js, Express, and PostgreSQL.
               </p>
 
               {/* Buttons */}
@@ -119,9 +118,8 @@ export default function Home() {
                 </Link>
 
                 <a
-                  href="https://drive.google.com/file/d/1yhTyPfoBr80q89XeQMmSqjdGid5Tfu4a/view?usp=sharing"
+                  href="/Ryan-Palomo-FullStack-Developer-Resume.pdf"
                   download
-                  target="_blank"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold text-sm hover:border-[hsl(var(--primary)/0.5)] hover:bg-[hsl(var(--primary)/0.05)] transition-all duration-200"
                 >
                   <Download size={16} />

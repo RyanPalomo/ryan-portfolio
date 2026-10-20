@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { Reveal } from "@/components/ui/reveal";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Mail, MapPin, Calendar } from "lucide-react";
+import { Mail, MapPin, Calendar, Phone } from "lucide-react";
 
 export default function Contact() {
   // Load Calendly widget script
@@ -30,7 +30,7 @@ export default function Contact() {
               Contact
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             <span className="text-[hsl(var(--foreground))]">Let&apos;s Work</span>{" "}
             <span
               style={{
@@ -42,7 +42,7 @@ export default function Contact() {
             >
               Together
             </span>
-          </h2>
+          </h1>
           <p className="text-[hsl(var(--muted-foreground))] text-[15px] leading-relaxed max-w-lg mx-auto">
             Whether you have a project in mind, want to collaborate, or just want to say hi —
             my inbox is always open.
@@ -91,6 +91,18 @@ export default function Contact() {
                 <p className="text-[12px] text-[hsl(var(--muted-foreground))]">Open to Remote Work</p>
               </div>
             </div>
+
+            {/* Phone */}
+            <a
+              href="tel:+639564093738"
+              className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] px-6 py-4 flex items-center gap-3 transition-colors hover:border-[hsl(var(--primary)/0.4)]"
+            >
+              <Phone size={16} className="text-[hsl(var(--primary))] shrink-0" />
+              <div>
+                <p className="text-[13px] font-medium text-[hsl(var(--foreground))]">+63 956 409 3738</p>
+                <p className="text-[12px] text-[hsl(var(--muted-foreground))]">Phone</p>
+              </div>
+            </a>
 
             {/* Social links */}
             <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-6 flex flex-col gap-4">

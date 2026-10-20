@@ -113,9 +113,9 @@ export default function Loader() {
 
         {/* Name */}
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[hsl(var(--foreground))] tracking-tight">
+          <p className="text-2xl font-bold text-[hsl(var(--foreground))] tracking-tight">
             Ryan Paul Palomo
-          </h1>
+          </p>
           <p className="text-sm text-[hsl(var(--muted-foreground))] mt-1 tracking-widest uppercase">
             Full Stack Developer
           </p>

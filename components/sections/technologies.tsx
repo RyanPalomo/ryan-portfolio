@@ -39,6 +39,7 @@ const categories: Category[] = [
       { name: "TypeScript",    icon: svgl("typescript.svg"),        },
       { name: "React JS",      icon: svgl({ light: "react_light.svg", dark: "react_dark.svg" }),  },
       { name: "Next JS",       icon: svgl({ light: "nextjs_icon_dark.svg", dark: "nextjs_icon_dark.svg" }),  },
+      { name: "Remix",         icon: svgl({ light: "remix_light.svg", dark: "remix_dark.svg" }),  },
       { name: "Tailwind CSS",  icon: svgl("tailwindcss.svg"),      },
       { name: "Bootstrap",     icon: svgl("bootstrap.svg"),        },
     ],
@@ -55,6 +56,7 @@ const categories: Category[] = [
       { name: "Java",       icon: svgl("java.svg"),                },
       { name: "C#",         icon: svgl("csharp.svg"),              },
       { name: "Ruby",       icon: svgl("ruby.svg"),                },
+      { name: "C++",        icon: svgl("c-plusplus.svg"),          },
     ],
   },
   {
@@ -65,6 +67,7 @@ const categories: Category[] = [
       { name: "MySQL",      icon: svgl({ light: "mysql-icon-light.svg", dark: "mysql-icon-dark.svg" }), },
       { name: "PostgreSQL", icon: svgl("postgresql.svg"),          },
       { name: "Supabase",   icon: svgl("supabase.svg"),            },
+      { name: "Prisma",     icon: svgl("prisma.svg"),              },
     ],
   },
   {
@@ -73,6 +76,7 @@ const categories: Category[] = [
     accent: "#22d3ee",
     techs: [
       { name: "Shopify",    icon: svgl("shopify.svg"),             },
+      { name: "Shopify CLI", icon: svgl("shopify.svg"),            },
       { name: "WordPress",  icon: svgl("wordpress.svg"),           },
 
     ],

@@ -5,7 +5,7 @@ export default function About() {
   const stats = [
     { value: "3+", label: "Year Experience" },
     { value: "9+", label: "Projects Shipped" },
-    { value: "3", label: "Roles Held" },
+    { value: "4", label: "Roles Held" },
     { value: "2025", label: "PUP Grad" },
   ];
 
@@ -17,7 +17,7 @@ export default function About() {
           <p className="text-xs font-semibold tracking-widest uppercase text-[hsl(var(--primary))] mb-4">
             About Me
           </p>
-          <h2 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-6 leading-tight">
+          <h1 className="text-4xl font-bold text-[hsl(var(--foreground))] mb-6 leading-tight">
             Building things that{" "}
             <span
               style={{
@@ -29,22 +29,24 @@ export default function About() {
             >
               live on the web.
             </span>
-          </h2>
+          </h1>
           <div className="space-y-4 text-[hsl(var(--muted-foreground))] leading-relaxed text-[15px]">
             <p>
               I&apos;m <span className="text-[hsl(var(--foreground))] font-medium">Ryan Paul Palomo</span>, a
-              Junior Full Stack Developer based in the Philippines. I specialize in building custom
-              Shopify solutions, responsive web applications, and SaaS platforms from the ground up.
+              Full Stack Developer based in the Philippines with production experience building
+              client-facing applications end to end — from responsive interfaces to APIs and databases.
             </p>
             <p>
-              Currently, I&apos;m a <span className="text-[hsl(var(--foreground))] font-medium">Web Developer at GoCommerce</span> and
-              Full-Stack Developer at <span className="text-[hsl(var(--foreground))] font-medium">Nexera Solutions</span>, where I
-              helped build Multiple SaaS Products.
+              I currently work as a <span className="text-[hsl(var(--foreground))] font-medium">Jr. Web Developer at GoCommerce</span> and
+              part-time Full Stack Developer at <span className="text-[hsl(var(--foreground))] font-medium">Nexera Solutions</span>.
+              My work spans Shopify and Liquid customization, WordPress, and SaaS development with
+              React, Node.js, Express, PostgreSQL, PHP, and MySQL.
             </p>
             <p>
               I graduated <span className="text-[hsl(var(--foreground))] font-medium">Magna Cum Laude</span> from
-              the Polytechnic University of the Philippines with a BS in Information Technology Degree, and
-              I love turning complex problems into clean, user-friendly products.
+              the Polytechnic University of the Philippines with a Bachelor of Science in Information
+              Technology and ranked among the 2025 Academic Top 10. I enjoy collaborating with designers,
+              stakeholders, and developers to ship and troubleshoot production features.
             </p>
           </div>
 

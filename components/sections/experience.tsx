@@ -3,36 +3,37 @@
 import { Reveal } from "@/components/ui/reveal";
 const experiences = [
   {
+    company: "Nexera Solutions",
+    role: "Full Stack Developer (Part-Time)",
+    period: "Nov 2025 – Present",
+    current: true,
+    bullets: [
+      "Co-founded Zupport, a SaaS customer-support and ticketing platform, and built 10–15 REST API endpoints with Node.js and Express.",
+      "Helped design the PostgreSQL schema and authentication flow, connecting the front end, API, and database under senior guidance.",
+      "Built 8+ major features including authentication, role-based access, ticket management, live conversations, analytics dashboards, and tenant and user management.",
+      "Deployed the platform on Vercel, supported an active paying client company, and resolved production issues to keep the product stable.",
+    ],
+  },
+  {
     company: "GoCommerce",
-    role: "Web Developer",
+    role: "Jr. Web Developer",
     period: "Aug 2025 – Present",
     current: true,
     bullets: [
-      "Developed custom Shopify landing pages using Liquid, HTML, CSS, and JavaScript with responsive and performance-focused design practices.",
-      "Implemented and configured Shopify applications and integrations to extend store functionality and improve user experience.",
-      "Collaborated with designers and stakeholders to translate business requirements into production-ready features.",
+      "Shipped 25+ custom Shopify landing pages and 45+ custom sections and components across five production storefronts for consumer-electronics brands.",
+      "Converted 100% of assigned Figma designs into responsive, production-ready Liquid, HTML, CSS, and JavaScript implementations.",
+      "Built schema-driven, page-builder-friendly sections for non-developer Key Account Managers and researched or implemented 6–10 Shopify apps and integrations.",
+      "Resolved backend data mismatches, responsiveness problems, and third-party app conflicts, contributing to sales increases of 89–103% on three client stores and improved GTmetrix grades.",
     ],
   },
   {
-    company: "Nexera Solutions",
-    role: "Full Stack Developer",
-    period: "Nov 2025 – Present (Part-time)",
-    current: true,
-    bullets: [
-      "Co-founded Zupport, a SaaS-based customer support and ticketing platform for managing client communications and workflows.",
-      "Assisted in the development of full-stack features including ticket management, authentication, and role-based access control.",
-      "Gained hands-on experience in end-to-end SaaS development, from feature implementation to deployment.",
-    ],
-  },
-  {
-    company: "Freelancer",
-    role: "Web Developer",
-    period: "Mar 2025 – Nov 2025 (Part-time)",
+    company: "Freelance",
+    role: "Web Developer (Part-Time)",
+    period: "Mar 2025 – Nov 2025",
     current: false,
     bullets: [
-      "Built and deployed WordPress websites for clients, delivering responsive, SEO-friendly, and scalable solutions.",
-      "Managed product organization, website content, and UI updates to ensure accuracy, consistency, and improved user experience.",
-      "Edited and optimized product images to maintain visual consistency and enhance overall site presentation.",
+      "Built, deployed, and administered a WordPress website for a client, including theme customization and plugin configuration.",
+      "Managed site content and UI updates to maintain a consistent, responsive experience.",
     ],
   },
   {
@@ -42,8 +43,7 @@ const experiences = [
     current: false,
     bullets: [
       "Built and enhanced Shopify features using Liquid and JavaScript under senior developer guidance.",
-      "Implemented UI updates, bug fixes, and optimizations across multiple client projects.",
-      "Researched Shopify tools and development approaches to support scalable feature implementation.",
+      "Implemented UI fixes and optimizations across multiple client projects.",
     ],
   },
 ];
@@ -132,10 +132,10 @@ export default function Experience() {
               Polytechnic University of the Philippines
             </p>
             <p className="text-[13px] text-[hsl(var(--muted-foreground))] mb-3">
-              BS Information Technology
+              Bachelor of Science in Information Technology
             </p>
             <div className="flex gap-2 flex-wrap">
-              {["Magna Cum Laude", "Academic Top 10"].map((tag) => (
+              {["Magna Cum Laude", "Academic Achiever — Overall Top 10, 2025"].map((tag) => (
                 <span
                   key={tag}
                   className="text-[11px] px-2 py-0.5 rounded-sm border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] bg-[hsl(var(--muted)/0.4)]"
