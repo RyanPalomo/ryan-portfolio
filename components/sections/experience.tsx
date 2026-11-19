@@ -16,7 +16,7 @@ const experiences = [
   },
   {
     company: "GoCommerce",
-    role: "Jr. Web Developer",
+    role: "Shopify Developer",
     period: "Aug 2025 – Present",
     current: true,
     bullets: [
