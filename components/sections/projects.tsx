@@ -68,6 +68,15 @@ const projects: Project[] = [
     featured: false,
   },
   {
+    name: "Heyday PH",
+    description:
+      "Shopify store for Heyday Philippines — currently in active development. Building out the storefront with custom Liquid sections, optimized product pages, and a polished brand experience.",
+    tech: ["Shopify", "Liquid", "HTML", "CSS"],
+    live: "https://heyday.ph/",
+    status: "Live",
+    featured: false,
+  },
+  {
     name: "Eufy PH",
     description:
       "Shopify e-commerce store for Eufy Philippines, featuring smart home and security products. Delivered a clean, conversion-optimized storefront with custom Liquid components.",
@@ -83,15 +92,6 @@ const projects: Project[] = [
     tech: ["Shopify", "Liquid", "HTML", "CSS"],
     live: null,
     status: "Completed",
-    featured: false,
-  },
-  {
-    name: "Heyday PH",
-    description:
-      "Shopify store for Heyday Philippines — currently in active development. Building out the storefront with custom Liquid sections, optimized product pages, and a polished brand experience.",
-    tech: ["Shopify", "Liquid", "HTML", "CSS"],
-    live: null,
-    status: "In Progress",
     featured: false,
   },
   {
