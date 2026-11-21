@@ -37,7 +37,7 @@ export default function About() {
               client-facing applications end to end — from responsive interfaces to APIs and databases.
             </p>
             <p>
-              I currently work as a <span className="text-[hsl(var(--foreground))] font-medium">Jr. Web Developer at GoCommerce</span> and
+              I currently work as a <span className="text-[hsl(var(--foreground))] font-medium">Shopify Developer at GoCommerce</span> and
               part-time Full Stack Developer at <span className="text-[hsl(var(--foreground))] font-medium">Nexera Solutions</span>.
               My work spans Shopify and Liquid customization, WordPress, and SaaS development with
               React, Node.js, Express, PostgreSQL, PHP, and MySQL.
